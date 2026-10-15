@@ -1,15 +1,19 @@
 # gmkfs
 
-## Development
+Treat GNU make targets as files: reading a target builds it and returns the
+contents of the resulting file.
 
-Install the [MoonBit toolchain](https://www.moonbitlang.com/download), then run:
+## Usage
+
+Requires MoonBit and GNU make 4.4 or later (`brew install make` on macOS).
 
 ```sh
-moon check
-moon run cmd/main
-moon test
-moon fmt
-moon build
+# List targets (.PHONY targets are excluded)
+moon run cmd/main -- -C examples/hello ls
+
+# Build a target and read its contents
+moon run cmd/main -- -C examples/hello cat hello.txt
 ```
 
-The executable entry point is `cmd/main/main.mbt`.
+Use `-C DIRECTORY` to select a working directory, `-f MAKEFILE` to select a
+Makefile, and `--make PROGRAM` to select GNU make explicitly.
