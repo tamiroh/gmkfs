@@ -1,6 +1,7 @@
 import {
   "tamiroh/gmkfs",
   "moonbitlang/async",
+  "moonbitlang/async/stdio",
   "moonbitlang/core/env",
 }
 
