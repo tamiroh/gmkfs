@@ -9,10 +9,10 @@ Requires MoonBit and GNU make 4.4 or later (`brew install make` on macOS).
 
 ```sh
 # List targets (.PHONY targets are excluded)
-moon run cmd/main -- -C examples/hello ls
+moon run src/cmd/main -- -C examples/hello ls
 
 # Build a target and read its contents
-moon run cmd/main -- -C examples/hello cat hello.txt
+moon run src/cmd/main -- -C examples/hello cat hello.txt
 ```
 
 Use `-C DIRECTORY` to select a working directory, `-f MAKEFILE` to select a
