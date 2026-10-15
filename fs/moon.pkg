@@ -1,5 +1,5 @@
 import {
-  "moonbitlang/async/fs",
+  "moonbitlang/async/fs" @host_fs,
   "moonbitlang/async/process",
   "moonbitlang/core/env",
 }

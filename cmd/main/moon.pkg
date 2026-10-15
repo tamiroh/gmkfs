@@ -1,5 +1,5 @@
 import {
-  "tamiroh/gmkfs",
+  "tamiroh/gmkfs/fs" @filesystem,
   "moonbitlang/async",
   "moonbitlang/async/stdio",
   "moonbitlang/core/env",

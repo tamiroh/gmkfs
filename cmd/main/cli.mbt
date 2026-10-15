@@ -29,7 +29,7 @@ async fn run(args : ArrayView[String]) -> Unit {
     fail(Usage)
   }
   let target = if command == "cat" { args[i + 1] } else { "" }
-  let filesystem = @gmkfs.FileSystem::open(
+  let filesystem = @filesystem.FileSystem::open(
     directory~,
     makefile~,
     program?,

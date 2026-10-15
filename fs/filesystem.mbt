@@ -19,7 +19,7 @@ pub async fn FileSystem::open(
   program? : String,
   diagnostics~ : &@process.ProcessOutput,
 ) -> FileSystem {
-  let directory = @fs.realpath(directory)
+  let directory = @host_fs.realpath(directory)
   let program = choose_make(program)
   { directory, makefile, program, diagnostics, }
 }
@@ -60,7 +60,7 @@ pub async fn FileSystem::list(self : FileSystem) -> Array[String] {
 pub async fn FileSystem::open_file(
   self : FileSystem,
   target : String,
-) -> @fs.File {
+) -> @host_fs.File {
   guard valid_target(target) else { fail("unsupported target name: \{target}") }
   guard self.list().contains(target) else {
     fail("target is not exposed (unknown, .PHONY, or unsupported): \{target}")
@@ -77,8 +77,8 @@ pub async fn FileSystem::open_file(
     fail("build failed (make exited \{status}): \{target}")
   }
   let path = "\{self.directory}/\{target}"
-  guard @fs.kind(path) == @fs.Regular else {
+  guard @host_fs.kind(path) == @host_fs.Regular else {
     fail("target did not produce a regular file: \{target}")
   }
-  @fs.open(path, mode=ReadOnly)
+  @host_fs.open(path, mode=ReadOnly)
 }
